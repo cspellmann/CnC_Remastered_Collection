@@ -61,6 +61,7 @@ static UnitTypeClass const UnitVisceroid(
 		false,			// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -120,6 +121,7 @@ static UnitTypeClass const UnitFTank(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -177,6 +179,7 @@ static UnitTypeClass const UnitSTank(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -234,6 +237,7 @@ static UnitTypeClass const UnitLTank(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		true,			//	Is this a typical transport vehicle?
+		1,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -291,6 +295,7 @@ static UnitTypeClass const UnitMTank(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		true,			//	Is this a typical transport vehicle?
+		2,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -348,6 +353,7 @@ static UnitTypeClass const UnitHTank(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -405,6 +411,7 @@ static UnitTypeClass const UnitMHQ(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -463,6 +470,7 @@ static UnitTypeClass const UnitHover(
 		false,			// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		true,				//	Is this a typical transport vehicle?
+		5,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -522,6 +530,7 @@ static UnitTypeClass const UnitSAM(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -580,6 +589,7 @@ static UnitTypeClass const UnitArty(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -637,6 +647,7 @@ static UnitTypeClass const UnitHarvester(
 		false,			// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		true,				// Does this unit harvest Tiberium?
@@ -696,6 +707,7 @@ static UnitTypeClass const UnitMCV(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -754,6 +766,7 @@ static UnitTypeClass const UnitJeep(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -810,7 +823,8 @@ static UnitTypeClass const UnitBuggy(
 		true,				// Is a leader type?
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
-		false,			//	Is this a typical transport vehicle?
+		false,			//	Is this a typical transport vehicle
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -868,6 +882,7 @@ static UnitTypeClass const UnitBike(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false/*true*/,	// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -929,6 +944,7 @@ static UnitTypeClass const UnitMLRS(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -987,6 +1003,7 @@ static UnitTypeClass const UnitAPC(
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
 		true,				//	Is this a typical transport vehicle?
+		5,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1045,6 +1062,7 @@ static UnitTypeClass const UnitGunBoat(
 		false,			// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1103,6 +1121,7 @@ static UnitTypeClass const UnitTric(
 		true,				// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1153,6 +1172,7 @@ static UnitTypeClass const UnitTrex(
 		true,				// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1203,6 +1223,7 @@ static UnitTypeClass const UnitRapt(
 		true,				// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false/*true*/,	// Can it be crushed by a heavy vehicle?
 		false,			// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1253,6 +1274,7 @@ static UnitTypeClass const UnitSteg(
 		true,				// Only has eight facings?
 		true,				// Always use the given name for the vehicle?
 		false,			//	Is this a typical transport vehicle?
+		0,				// transport capacity of the vehicle.
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -1414,6 +1436,7 @@ UnitTypeClass::UnitTypeClass(UnitType type,
 				bool is_eight,
 				bool is_nominal,
 				bool is_transporter,
+				unsigned transport_capacity,
 				bool is_crushable,
 				bool is_crusher,
 				bool is_harvest,
@@ -1501,6 +1524,7 @@ UnitTypeClass::UnitTypeClass(UnitType type,
 	Speed = speed;
 	TurretOffset = toffset;
 	Type = type;
+	TransportCapacity = transport_capacity;
 }
 
 

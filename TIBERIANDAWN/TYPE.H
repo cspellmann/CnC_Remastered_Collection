@@ -464,6 +464,7 @@ class TechnoTypeClass : public ObjectTypeClass
 		**	this.
 		*/
 		unsigned IsTransporter:1;
+		unsigned TransportCapacity : 5;
 
 		/*
 		**	Most objects have the ability to reveal the terrain around themselves.
@@ -997,6 +998,7 @@ class UnitTypeClass : public TechnoTypeClass
 						bool is_eight,
 						bool is_nominal,
 						bool is_transporter,
+						unsigned transport_capacity,
 						bool is_crushable,
 						bool is_crusher,
 						bool is_harvest,

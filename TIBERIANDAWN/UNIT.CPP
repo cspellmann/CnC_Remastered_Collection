@@ -613,7 +613,7 @@ RadioMessageType UnitClass::Receive_Message(RadioClass * from, RadioMessageType 
 		**	entered the transport.
 		*/
 		case RADIO_IM_IN:
-			if (How_Many() == Class->Max_Passengers()) {
+			if (How_Many() == Class->Max_Passengers() && *this == UNIT_APC) {
 				APC_Close_Door();
 			}
 			return(RADIO_ATTACH);
@@ -623,7 +623,7 @@ RadioMessageType UnitClass::Receive_Message(RadioClass * from, RadioMessageType 
 		**	to the impatient unit.
 		*/
 		case RADIO_DOCKING:
-			if (Class->IsTransporter && *this == UNIT_APC && How_Many() < Class->Max_Passengers()) {
+			if (Class->IsTransporter && (*this == UNIT_APC || *this == UNIT_MTANK || *this == UNIT_LTANK) && How_Many() < Class->Max_Passengers()) {
 				TarComClass::Receive_Message(from, message, param);
 
 				/*
@@ -669,13 +669,15 @@ RadioMessageType UnitClass::Receive_Message(RadioClass * from, RadioMessageType 
 								**	transport doors. Close the doors if the transport is or needs
 								**	to rotate.
 								*/
-								if (IsRotating) {
-									if (!Is_Door_Closed()) {
-										APC_Close_Door();
-									}
-								} else {
-									if (!Is_Door_Open()) {
-										APC_Open_Door();
+								if (*this == UNIT_APC) {
+									if (IsRotating) {
+										if (!Is_Door_Closed()) {
+											APC_Close_Door();
+										}
+									} else {
+										if (!Is_Door_Open()) {
+											APC_Open_Door();
+										}
 									}
 								}
 							}
@@ -686,7 +688,7 @@ RadioMessageType UnitClass::Receive_Message(RadioClass * from, RadioMessageType 
 							**	directly.
 							*/
 							if (Transmit_Message(RADIO_MOVE_HERE, param, from) == RADIO_YEA_NOW_WHAT) {
-								if (Is_Door_Open() || Target_Legal(TarCom)) {
+								if (((*this == UNIT_APC && Is_Door_Open()) || *this == UNIT_MTANK || *this == UNIT_LTANK) || Target_Legal(TarCom)) {
 									param = (long)As_Target();
 									Transmit_Message(RADIO_TETHER);
 									if (Transmit_Message(RADIO_MOVE_HERE, param, from) != RADIO_ROGER) {
@@ -2386,6 +2388,71 @@ int UnitClass::Mission_Unload(void)
 	CELL		cell;
 
 	switch (Class->Type) {
+		case UNIT_MTANK:
+		case UNIT_LTANK:
+			switch (Status) {
+			case INITIAL_CHECK:
+				dir = Desired_Load_Dir(NULL, cell);
+				if (How_Many() && cell != 0) {
+					Do_Turn(dir);
+					Status = MANEUVERING;
+					return(1);
+				}
+				else {
+					Assign_Mission(MISSION_GUARD);
+				}
+				break;
+			case MANEUVERING:
+				if (!IsRotating) {
+					Status = UNLOADING;
+					return(1);
+				}
+				break;
+			case UNLOADING:
+				if (How_Many()) {
+					FootClass * passenger = Detach_Object();
+
+					if (passenger) {
+						DirType toface = DIR_S + PrimaryFacing;
+						bool placed = false;
+
+						for (FacingType face = FACING_N; face < FACING_COUNT; face++) {
+							DirType newface = toface + face;
+							CELL newcell = Adjacent_Cell(Coord_Cell(Coord), newface);
+
+							if (passenger->Can_Enter_Cell(newcell) == MOVE_OK) {
+								ScenarioInit++;
+								passenger->Unlimbo(Coord_Move(Coord, newface, 0x0080), newface);
+								ScenarioInit--;
+								passenger->Assign_Mission(MISSION_MOVE);
+								passenger->Assign_Destination(::As_Target(newcell));
+								placed = true;
+								break;
+							}
+						}
+
+						/*
+						** If the attached unit could NOT be deployed, then re-attach
+						**	it and then bail out of this deploy process.
+						*/
+						if (!placed) {
+							Attach(passenger);
+							Status = CLOSING_DOOR;
+						}
+						else {
+							passenger->Look(false);
+						}
+					}
+				}
+				else {
+					Status = CLOSING_DOOR;
+				}
+				break;
+			case CLOSING_DOOR:
+				Assign_Mission(MISSION_GUARD);
+				break;
+			}
+			break;
 		case UNIT_APC:
 			switch (Status) {
 				case INITIAL_CHECK:

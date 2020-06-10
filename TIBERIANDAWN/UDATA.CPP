@@ -233,7 +233,7 @@ static UnitTypeClass const UnitLTank(
 		true,				// Is a leader type?
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
-		false,			//	Is this a typical transport vehicle?
+		true,			//	Is this a typical transport vehicle?
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?
@@ -290,7 +290,7 @@ static UnitTypeClass const UnitMTank(
 		true,				// Is a leader type?
 		false,			// Only has eight facings?
 		false,			// Always use the given name for the vehicle?
-		false,			//	Is this a typical transport vehicle?
+		true,			//	Is this a typical transport vehicle?
 		false,			// Can it be crushed by a heavy vehicle?
 		true,				// Can this unit squash infantry?
 		false,			// Does this unit harvest Tiberium?

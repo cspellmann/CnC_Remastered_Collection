@@ -225,6 +225,9 @@ TechnoTypeClass::TechnoTypeClass(
 	if (primary != WEAPON_NONE) {
 		Risk = (Weapons[primary].Attack * (Weapons[primary].Range >> 4)) / Weapons[primary].ROF;
 	}
+
+	// Set the default transport capcaity
+	TransportCapacity = 5;
 }
 
 
@@ -3018,9 +3021,11 @@ ResultType TechnoClass::Take_Damage(int & damage, int distance, WarheadType warh
  *=============================================================================================*/
 int TechnoTypeClass::Max_Passengers(void) const
 {
+
 	if (IsTransporter) {
-		return(5);
+		return(TransportCapacity);
 	}
+
 	return(0);
 }
 

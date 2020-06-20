@@ -273,7 +273,7 @@ static UnitTypeClass const UnitLTank(
 	HOUSEF_MULTI6|
 	HOUSEF_JP|
 	HOUSEF_BAD,								// OWNABLE:		Ownable by house (bit field).
-	WEAPON_75MM,WEAPON_NONE,
+	WEAPON_75MM, WEAPON_COAXIAL_MG,
 	ARMOR_STEEL,							// ARMOR:		Armor type
 	SPEED_TRACK,							// MOVE:			Locomotion type.
 	MPH_MEDIUM,								// SPEED:		Miles per hour.
@@ -331,7 +331,7 @@ static UnitTypeClass const UnitMTank(
 	HOUSEF_MULTI6|
 	HOUSEF_JP|
 	HOUSEF_GOOD,							// OWNABLE:		Ownable by house (bit field).
-	WEAPON_105MM,WEAPON_NONE,
+	WEAPON_105MM, WEAPON_COAXIAL_MG,
 	ARMOR_STEEL,							// ARMOR:		Armor type
 	SPEED_TRACK,							// MOVE:			Locomotion type.
 	MPH_MEDIUM,								// SPEED:		Miles per hour.

@@ -103,15 +103,23 @@ void TarComClass::AI(void)
 		**	Determine which weapon can fire. First check for the primary weapon. If that weapon 
 		**	cannot fire, then check any secondary weapon. If neither weapon can fire, then the
 		**	failure code returned is that from the primary weapon.
+		**  Added: if the unit is either a LTank or MTank, transporting another infantry unit and the 
+		**  is enemy infantry then the secondary weapon is preferred. 
 		*/
-		WeaponTypeClass const * weapon = &Weapons[Class->Primary];
-		int primary = 0;
-		FireErrorType ok = Can_Fire(TarCom, 0);
+		bool isInfantry = Is_Target_Infantry(TarCom);
+		bool isTank = (*this == UNIT_LTANK || *this == UNIT_MTANK);
+		bool isTransporting = this->Class->IsTransporter && How_Many() > 0;
+
+		int primary = (isInfantry && isTank && isTransporting) ? 1 : 0;
+
+		FireErrorType ok = Can_Fire(TarCom, primary);
+		WeaponTypeClass const * weapon = &Weapons[primary == 0 ? Class->Primary : Class->Secondary];
 		if (ok != FIRE_OK) {
-			if (Can_Fire(TarCom, 1) == FIRE_OK) {
+			primary = (primary == 1) ? 0 : 1;
+
+			if (Can_Fire(TarCom, primary) == FIRE_OK) {
 				ok = FIRE_OK;
-				primary = 1;
-				weapon = &Weapons[Class->Secondary];
+				weapon = &Weapons[primary == 0 ? Class->Primary : Class->Secondary];
 			}
 		}
 

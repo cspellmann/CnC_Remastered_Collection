@@ -10,6 +10,10 @@ carry infantry units and had secondary weapons to defend themselves from infrant
 - Medium tanks can carry 2 infantry units
 - When transporting at least one infantry unit medium tanks will use a MG to defend themselves from enemy infantry units.
 
+## Change History
+
+- 2020/06/23 Ensure that the mod is compatibe with the latest patch.
+
 ## Contact
 Reach out to me on twitter!
 

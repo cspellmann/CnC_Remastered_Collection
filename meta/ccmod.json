@@ -3,7 +3,7 @@
   "description": "Enables Light and Medium tanks to carry infantry units, and adds secondary weapons to those vehicles.",
   "author": "Claude",
   "load_order": 1,
-  "version_low": 0,
+  "version_low": 1,
   "version_high": 1,
   "game_type": "TD"
 }

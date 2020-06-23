@@ -11,8 +11,10 @@ carry infantry units and had secondary weapons to defend themselves from infrant
 - When transporting at least one infantry unit medium tanks will use a MG to defend themselves from enemy infantry units.
 
 ## Change History
-
 - 2020/06/23 Ensure that the mod is compatibe with the latest patch.
+
+## Note
+This mod is currently for Tiberian Dawn only.  
 
 ## Contact
 Reach out to me on twitter!
